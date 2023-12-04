@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="Bomb Rewirer"
+run/main_scene="res://Scenes/start_scene.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Globals="*res://Scripts/globals.gd"
 
 [display]
 

@@ -1,0 +1,85 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2mda53ovbu3"]
+
+[ext_resource type="Script" path="res://Scripts/Main/panel.gd" id="1_fwse1"]
+
+[node name="BombPanel" type="Node2D"]
+
+[node name="BombSprite" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+
+[node name="DEBUG_BombSprite" type="Polygon2D" parent="."]
+position = Vector2(640, 360)
+polygon = PackedVector2Array(-128, -104, 0, -104, 128, 24, 128, 152, 224, 152, 128, 248, 128, 152, 0, 152, -128, 24)
+
+[node name="Panel1" type="Node2D" parent="."]
+position = Vector2(352, 168)
+script = ExtResource("1_fwse1")
+enterAnimationName = "panel1_enter"
+
+[node name="PanelSprite" type="Sprite2D" parent="Panel1"]
+
+[node name="DEBUG_PanelSprite" type="Polygon2D" parent="Panel1"]
+color = Color(0.588235, 0.588235, 0.588235, 1)
+polygon = PackedVector2Array(-128, -72, 128, -72, 128, 88, -128, 88)
+
+[node name="PanelButton" type="Button" parent="Panel1"]
+offset_left = -96.0
+offset_top = -40.0
+offset_right = 96.0
+offset_bottom = 56.0
+
+[node name="Panel2" type="Node2D" parent="."]
+position = Vector2(896, 200)
+script = ExtResource("1_fwse1")
+enterAnimationName = "panel2_enter"
+
+[node name="PanelSprite" type="Sprite2D" parent="Panel2"]
+
+[node name="DEBUG_PanelSprite" type="Polygon2D" parent="Panel2"]
+color = Color(0.588235, 0.588235, 0.588235, 1)
+polygon = PackedVector2Array(-128, -72, 128, -72, 128, 88, -128, 88)
+
+[node name="PanelButton" type="Button" parent="Panel2"]
+offset_left = -96.0
+offset_top = -40.0
+offset_right = 96.0
+offset_bottom = 56.0
+
+[node name="Panel3" type="Node2D" parent="."]
+position = Vector2(288, 456)
+script = ExtResource("1_fwse1")
+enterAnimationName = "panel3_enter"
+
+[node name="PanelSprite" type="Sprite2D" parent="Panel3"]
+
+[node name="DEBUG_PanelSprite" type="Polygon2D" parent="Panel3"]
+color = Color(0.588235, 0.588235, 0.588235, 1)
+polygon = PackedVector2Array(-128, -72, 128, -72, 128, 88, -128, 88)
+
+[node name="PanelButton" type="Button" parent="Panel3"]
+offset_left = -96.0
+offset_top = -40.0
+offset_right = 96.0
+offset_bottom = 56.0
+
+[node name="Panel4" type="Node2D" parent="."]
+position = Vector2(1056, 520)
+script = ExtResource("1_fwse1")
+enterAnimationName = "panel4_enter"
+
+[node name="PanelSprite" type="Sprite2D" parent="Panel4"]
+
+[node name="DEBUG_PanelSprite" type="Polygon2D" parent="Panel4"]
+color = Color(0.588235, 0.588235, 0.588235, 1)
+polygon = PackedVector2Array(-128, -72, 128, -72, 128, 88, -128, 88)
+
+[node name="PanelButton" type="Button" parent="Panel4"]
+offset_left = -96.0
+offset_top = -40.0
+offset_right = 96.0
+offset_bottom = 56.0
+
+[connection signal="button_down" from="Panel1/PanelButton" to="Panel1" method="_on_panel_button_button_down"]
+[connection signal="button_down" from="Panel2/PanelButton" to="Panel2" method="_on_panel_button_button_down"]
+[connection signal="button_down" from="Panel3/PanelButton" to="Panel3" method="_on_panel_button_button_down"]
+[connection signal="button_down" from="Panel4/PanelButton" to="Panel4" method="_on_panel_button_button_down"]

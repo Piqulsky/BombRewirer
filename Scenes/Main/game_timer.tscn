@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://d28nnhp3vwe3i"]
+
+[ext_resource type="Script" path="res://Scripts/Main/game_timer.gd" id="1_hann5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7yj2h"]
+font_size = 32
+
+[node name="GameTimer" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_hann5")
+
+[node name="GameTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="GameTimerLabel" type="Label" parent="."]
+offset_right = 128.0
+offset_bottom = 64.0
+text = "00:00"
+label_settings = SubResource("LabelSettings_7yj2h")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]
