@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://rliw6p85y4d7"]
+
+[ext_resource type="Script" path="res://Scripts/Main/EnergyCut/sine_line.gd" id="1_qifes"]
+
+[node name="Cable" type="Node2D"]
+position = Vector2(0, 64)
+
+[node name="DEBUG_CablePolygon2D" type="Polygon2D" parent="."]
+scale = Vector2(1, 1)
+polygon = PackedVector2Array(0, 0, 1280, 0, 1280, 64, 0, 64)
+
+[node name="CableSineLine2D" type="Node2D" parent="."]
+position = Vector2(0, 32)
+script = ExtResource("1_qifes")

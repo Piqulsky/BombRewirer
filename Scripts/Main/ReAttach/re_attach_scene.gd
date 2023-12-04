@@ -1,7 +1,7 @@
 extends Node2D
 
-var Cabel = preload("res://Scenes/Main/ReAttach/cabel.tscn")
-var AttachEntry = preload("res://Scenes/Main/ReAttach/attach_entry.tscn")
+const Cabel = preload("res://Scenes/Main/ReAttach/cabel.tscn")
+const AttachEntry = preload("res://Scenes/Main/ReAttach/attach_entry.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
