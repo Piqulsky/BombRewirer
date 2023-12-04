@@ -15,6 +15,7 @@ polygon = PackedVector2Array(-128, -104, 0, -104, 128, 24, 128, 152, 224, 152, 1
 position = Vector2(352, 168)
 script = ExtResource("1_fwse1")
 enterAnimationName = "panel1_enter"
+completeSignalName = "complete_re_attach"
 
 [node name="PanelSprite" type="Sprite2D" parent="Panel1"]
 
@@ -32,6 +33,7 @@ offset_bottom = 56.0
 position = Vector2(896, 200)
 script = ExtResource("1_fwse1")
 enterAnimationName = "panel2_enter"
+completeSignalName = "complete_energy_cut"
 
 [node name="PanelSprite" type="Sprite2D" parent="Panel2"]
 
@@ -49,6 +51,7 @@ offset_bottom = 56.0
 position = Vector2(288, 456)
 script = ExtResource("1_fwse1")
 enterAnimationName = "panel3_enter"
+completeSignalName = "complete_element_replace"
 
 [node name="PanelSprite" type="Sprite2D" parent="Panel3"]
 
@@ -66,6 +69,7 @@ offset_bottom = 56.0
 position = Vector2(1056, 520)
 script = ExtResource("1_fwse1")
 enterAnimationName = "panel4_enter"
+completeSignalName = "complete_catalyst_replace"
 
 [node name="PanelSprite" type="Sprite2D" parent="Panel4"]
 

@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://bq6x86o15c741"]
+
+[ext_resource type="Script" path="res://Scripts/Main/ReAttach/cabel.gd" id="1_0qehi"]
+[ext_resource type="Texture2D" uid="uid://dis715n0jhdxi" path="res://Textures/1.png" id="2_waqwc"]
+
+[node name="Cabel" type="Node2D" node_paths=PackedStringArray("reAttach")]
+script = ExtResource("1_0qehi")
+reAttach = NodePath("")
+
+[node name="CabelSprite2D" type="Sprite2D" parent="."]
+position = Vector2(32, 32)
+texture = ExtResource("2_waqwc")
+
+[node name="CableButton" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_right = 64.0
+offset_bottom = 64.0
+
+[node name="Line2D" type="Line2D" parent="."]
+texture_repeat = 2
+position = Vector2(32, 32)
+points = PackedVector2Array(0, 0, 0, 0)
+width = 32.0
+texture = ExtResource("2_waqwc")
+texture_mode = 1
+
+[connection signal="button_down" from="CableButton" to="." method="_on_cable_button_button_down"]
+[connection signal="button_up" from="CableButton" to="." method="_on_cable_button_button_up"]

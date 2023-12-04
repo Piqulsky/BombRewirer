@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://csa8kdh1phgoq"]
+
+[ext_resource type="Texture2D" uid="uid://dis715n0jhdxi" path="res://Textures/1.png" id="1_hb030"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tiv55"]
+size = Vector2(64, 64)
+
+[node name="AttachEntry" type="Node2D"]
+position = Vector2(-32, 0)
+
+[node name="ReAttachSprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_hb030")
+
+[node name="ReAttachArea2D" type="Area2D" parent="ReAttachSprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ReAttachSprite2D/ReAttachArea2D"]
+shape = SubResource("RectangleShape2D_tiv55")
