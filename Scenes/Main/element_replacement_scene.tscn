@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://br4k86ueydhhj"]
+[gd_scene load_steps=6 format=3 uid="uid://br4k86ueydhhj"]
 
 [ext_resource type="Script" path="res://Scripts/Main/back_button.gd" id="1_2xpj1"]
+[ext_resource type="Script" path="res://Scripts/Main/ElementReplace/piston.gd" id="2_tokwq"]
+[ext_resource type="Script" path="res://Scripts/Main/ElementReplace/light.gd" id="3_475fn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7j5ks"]
+size = Vector2(448, 192)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3kxkc"]
+size = Vector2(256, 64)
 
 [node name="ElementReplacementScene" type="Node2D"]
 
@@ -18,4 +26,66 @@ text = "^^^"
 script = ExtResource("1_2xpj1")
 enterAnimationName = "panel3_exit"
 
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 480.0
+offset_bottom = 672.0
+step = 1.0
+value = 100.0
+fill_mode = 3
+show_percentage = false
+
+[node name="Piston" type="Node2D" parent="." node_paths=PackedStringArray("progressBar", "light")]
+position = Vector2(768, 512)
+script = ExtResource("2_tokwq")
+progressBar = NodePath("../ProgressBar")
+light = NodePath("../LightPolygon2D")
+
+[node name="PistonLine2D" type="Line2D" parent="Piston"]
+points = PackedVector2Array(0, -320, 0, 96)
+width = 64.0
+default_color = Color(0.705882, 0.705882, 0.705882, 1)
+
+[node name="PistonBasePolygon2D" type="Polygon2D" parent="Piston"]
+polygon = PackedVector2Array(224, 0, 224, 192, -224, 192, -224, 0)
+
+[node name="BaseArea2D" type="Area2D" parent="Piston/PistonBasePolygon2D"]
+
+[node name="BaseCollisionShape2D" type="CollisionShape2D" parent="Piston/PistonBasePolygon2D/BaseArea2D"]
+position = Vector2(0, 96)
+shape = SubResource("RectangleShape2D_7j5ks")
+
+[node name="HandlePolygon2D" type="Polygon2D" parent="Piston"]
+position = Vector2(0, -320)
+color = Color(0.313726, 0.313726, 0.313726, 1)
+polygon = PackedVector2Array(128, -32, 128, 32, -128, 32, -128, -32)
+
+[node name="HandleButton" type="Button" parent="Piston/HandlePolygon2D"]
+modulate = Color(1, 1, 1, 0)
+offset_left = -128.0
+offset_top = -32.0
+offset_right = 128.0
+offset_bottom = 32.0
+
+[node name="Area2D" type="Area2D" parent="Piston/HandlePolygon2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piston/HandlePolygon2D/Area2D"]
+shape = SubResource("RectangleShape2D_3kxkc")
+
+[node name="LightPolygon2D" type="Polygon2D" parent="."]
+position = Vector2(1152, 128)
+color = Color(0, 1, 0, 1)
+polygon = PackedVector2Array(-32, 0, 0, -32, 32, 0, 0, 32)
+script = ExtResource("3_475fn")
+
+[node name="LightTimer" type="Timer" parent="LightPolygon2D"]
+wait_time = 5.0
+autostart = true
+
 [connection signal="button_down" from="BackButton" to="BackButton" method="_on_button_down"]
+[connection signal="area_shape_entered" from="Piston/PistonBasePolygon2D/BaseArea2D" to="Piston" method="_on_base_area_2d_area_shape_entered"]
+[connection signal="area_shape_exited" from="Piston/PistonBasePolygon2D/BaseArea2D" to="Piston" method="_on_base_area_2d_area_shape_exited"]
+[connection signal="button_down" from="Piston/HandlePolygon2D/HandleButton" to="Piston" method="_on_handle_button_button_down"]
+[connection signal="button_up" from="Piston/HandlePolygon2D/HandleButton" to="Piston" method="_on_handle_button_button_up"]
+[connection signal="timeout" from="LightPolygon2D/LightTimer" to="LightPolygon2D" method="_on_light_timer_timeout"]

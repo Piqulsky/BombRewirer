@@ -1,14 +1,27 @@
 [gd_scene load_steps=2 format=3 uid="uid://rliw6p85y4d7"]
 
-[ext_resource type="Script" path="res://Scripts/Main/EnergyCut/sine_line.gd" id="1_qifes"]
+[ext_resource type="Script" path="res://Scripts/Main/EnergyCut/cable.gd" id="1_wpe06"]
 
 [node name="Cable" type="Node2D"]
 position = Vector2(0, 64)
 
 [node name="DEBUG_CablePolygon2D" type="Polygon2D" parent="."]
-scale = Vector2(1, 1)
 polygon = PackedVector2Array(0, 0, 1280, 0, 1280, 64, 0, 64)
 
-[node name="CableSineLine2D" type="Node2D" parent="."]
+[node name="CableSineLine2D" type="Node2D" parent="." node_paths=PackedStringArray("DEBUG_cablePolygon", "scissors")]
 position = Vector2(0, 32)
-script = ExtResource("1_qifes")
+script = ExtResource("1_wpe06")
+DEBUG_cablePolygon = NodePath("../DEBUG_CablePolygon2D")
+scissors = NodePath("../ScissorsSprite2D")
+
+[node name="CableButton" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_right = 1280.0
+offset_bottom = 64.0
+
+[node name="ScissorsSprite2D" type="Sprite2D" parent="."]
+visible = false
+
+[connection signal="button_down" from="CableButton" to="CableSineLine2D" method="_on_cable_button_button_down"]
+[connection signal="mouse_entered" from="CableButton" to="CableSineLine2D" method="_on_cable_button_mouse_entered"]
+[connection signal="mouse_exited" from="CableButton" to="CableSineLine2D" method="_on_cable_button_mouse_exited"]

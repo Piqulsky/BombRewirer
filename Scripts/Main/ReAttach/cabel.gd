@@ -34,6 +34,7 @@ func _on_cable_button_button_up():
 		if Globals.cablesReAttached == 10:
 			Globals.complete_re_attach.emit()
 	else:
+		# ERROR -> Shorten the TIME
 		$Line2D.points[0] = Vector2(0, 0)
 
 func _on_mouse_entered_re_attach_area():

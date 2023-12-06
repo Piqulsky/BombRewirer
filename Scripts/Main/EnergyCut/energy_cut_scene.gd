@@ -15,14 +15,14 @@ func _ready():
 	
 	var colors := [Color.RED, Color.YELLOW, Color.BLUE, Color.ORANGE, Color.PURPLE]
 	var chosen = randi()%5
-	print(chosen)
 	for i in range(5):
 		var c = Cable.instantiate()
 		c.position = Vector2(0, 128*i +64)
 		var cable = c.get_node("CableSineLine2D")
 		cable.color = colors[i]
-		
+		cable.cutted.connect(_cut)
 		if i == chosen:
+			cable.chosen = true
 			cable.sineSpeed = sineSpeed
 			cable.amplitude = amplitude
 			cable.frequency = frequency
@@ -42,3 +42,13 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+func _cut(chosen :bool):
+	if(chosen):
+		Globals.complete_energy_cut.emit()
+	else:
+		# ERROR -> Shorten the TIME
+		for n in $EnergyCables.get_children():
+			$EnergyCables.remove_child(n)
+			n.queue_free()
+		_ready()
