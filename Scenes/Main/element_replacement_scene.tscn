@@ -31,7 +31,7 @@ offset_left = 32.0
 offset_top = 32.0
 offset_right = 480.0
 offset_bottom = 672.0
-step = 1.0
+step = 4.0
 value = 100.0
 fill_mode = 3
 show_percentage = false
@@ -40,7 +40,7 @@ show_percentage = false
 position = Vector2(768, 512)
 script = ExtResource("2_tokwq")
 progressBar = NodePath("../ProgressBar")
-light = NodePath("../LightPolygon2D")
+light = NodePath("../DevicePolygon2D/LightPolygon2D")
 
 [node name="PistonLine2D" type="Line2D" parent="Piston"]
 points = PackedVector2Array(0, -320, 0, 96)
@@ -56,6 +56,11 @@ polygon = PackedVector2Array(224, 0, 224, 192, -224, 192, -224, 0)
 position = Vector2(0, 96)
 shape = SubResource("RectangleShape2D_7j5ks")
 
+[node name="LightPolygon2D" type="Polygon2D" parent="Piston/PistonBasePolygon2D"]
+position = Vector2(0, 64)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(0, -32, 64, 32, 0, 96, -64, 32)
+
 [node name="HandlePolygon2D" type="Polygon2D" parent="Piston"]
 position = Vector2(0, -320)
 color = Color(0.313726, 0.313726, 0.313726, 1)
@@ -68,18 +73,22 @@ offset_top = -32.0
 offset_right = 128.0
 offset_bottom = 32.0
 
-[node name="Area2D" type="Area2D" parent="Piston/HandlePolygon2D"]
+[node name="HandleArea2D" type="Area2D" parent="Piston/HandlePolygon2D"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Piston/HandlePolygon2D/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piston/HandlePolygon2D/HandleArea2D"]
 shape = SubResource("RectangleShape2D_3kxkc")
 
-[node name="LightPolygon2D" type="Polygon2D" parent="."]
-position = Vector2(1152, 128)
+[node name="DevicePolygon2D" type="Polygon2D" parent="."]
+position = Vector2(1120, 32)
+polygon = PackedVector2Array(96, 32, 128, 128, 96, 288, 0, 320, -96, 288, -128, 128, -96, 32, 0, 0)
+
+[node name="LightPolygon2D" type="Polygon2D" parent="DevicePolygon2D"]
+position = Vector2(0, 128)
 color = Color(0, 1, 0, 1)
 polygon = PackedVector2Array(-32, 0, 0, -32, 32, 0, 0, 32)
 script = ExtResource("3_475fn")
 
-[node name="LightTimer" type="Timer" parent="LightPolygon2D"]
+[node name="LightTimer" type="Timer" parent="DevicePolygon2D/LightPolygon2D"]
 wait_time = 5.0
 autostart = true
 
@@ -88,4 +97,4 @@ autostart = true
 [connection signal="area_shape_exited" from="Piston/PistonBasePolygon2D/BaseArea2D" to="Piston" method="_on_base_area_2d_area_shape_exited"]
 [connection signal="button_down" from="Piston/HandlePolygon2D/HandleButton" to="Piston" method="_on_handle_button_button_down"]
 [connection signal="button_up" from="Piston/HandlePolygon2D/HandleButton" to="Piston" method="_on_handle_button_button_up"]
-[connection signal="timeout" from="LightPolygon2D/LightTimer" to="LightPolygon2D" method="_on_light_timer_timeout"]
+[connection signal="timeout" from="DevicePolygon2D/LightPolygon2D/LightTimer" to="DevicePolygon2D/LightPolygon2D" method="_on_light_timer_timeout"]

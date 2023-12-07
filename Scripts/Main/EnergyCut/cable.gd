@@ -14,21 +14,23 @@ extends Node2D
 
 var chosen := false
 signal cutted
+var drawing := true
 
 func ready():
 	queue_redraw()
 
 func _physics_process(delta):
-	movement += sineSpeed * delta
-	if movement > 2*PI:
-		movement = 0
+	if drawing:
+		movement += sineSpeed * delta
+		if movement > 2*PI:
+			movement = 0
 	queue_redraw()
 
 func _draw():
 	for i in range(totalLength):
 		draw_line(Vector2(length*i, amplitude*sin(frequency*i+movement)),\
 			Vector2(length*(i+1), amplitude*sin(frequency*(i+1)+movement)), color, width)
-
+		
 
 func _on_cable_button_mouse_entered():
 	DEBUG_cablePolygon.color = Color.GRAY

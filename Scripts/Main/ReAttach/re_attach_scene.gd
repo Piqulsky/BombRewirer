@@ -25,10 +25,9 @@ func _ready():
 		a.position = Vector2(-32, randIndexAttach[i]*64)
 		a.get_node("ReAttachSprite2D").texture = images[i]
 		c.load_params(images[i], Vector2(32, (randIndexCabel[i] * 64)+64), a.get_node("ReAttachSprite2D/ReAttachArea2D"))
+		c.attachCable.connect(_connect_cable)
 		$ReAttachmentDevice.add_child(a)
 		$AttachedCabels.add_child(c)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _connect_cable():
+	$ReAttachmentDevice/Lights.get_child(Globals.cablesReAttached - 1).color = Color.LIME

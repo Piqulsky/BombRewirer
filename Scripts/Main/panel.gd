@@ -18,3 +18,5 @@ func _on_panel_button_button_down():
 
 func _complete():
 	$DEBUG_PanelSprite.color = Color.GREEN
+	if Globals.completed_panels == 4:
+		Globals.complete_all_panels.emit()

@@ -33,16 +33,19 @@ func _on_handle_button_button_up():
 	mousePressed = false
 
 func _on_base_area_2d_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
-	onPiston = true
-	if not light.visible:
-		progressBar.value = 100
-		reachedTop = false
-		return
-	if reachedTop:
-		reachedTop = false
-		progressBar.value -= progressBar.step
-		if progressBar.value <= 0:
-			Globals.complete_element_replace
+	if area.name == "HandleArea2D":
+		onPiston = true
+		if not light.visible:
+			progressBar.value = 100
+			reachedTop = false
+			return
+		if reachedTop:
+			reachedTop = false
+			progressBar.value -= progressBar.step
+			if progressBar.value <= 0:
+				$PistonBasePolygon2D/LightPolygon2D.color = Color.LIME
+				Globals.completed_panels += 1
+				Globals.complete_element_replace.emit()
 
 func _on_base_area_2d_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
 	onPiston = false

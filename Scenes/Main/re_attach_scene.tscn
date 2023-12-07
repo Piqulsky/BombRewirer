@@ -28,6 +28,59 @@ position = Vector2(992, 96)
 [node name="DeviceSprite2D" type="Sprite2D" parent="ReAttachmentDevice"]
 
 [node name="DEBUG_DevicePolygon2D" type="Polygon2D" parent="ReAttachmentDevice"]
-polygon = PackedVector2Array(0, 0, 256, 0, 256, 576, 0, 576)
+scale = Vector2(1, 0.944444)
+polygon = PackedVector2Array(0, 0, 256, 0, 256, 576, 126.516, 576, 0, 576)
+
+[node name="Lights" type="Node2D" parent="ReAttachmentDevice"]
+
+[node name="LightPolygon2D1" type="Polygon2D" parent="ReAttachmentDevice/Lights"]
+position = Vector2(176, 80)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-16, 0, 0, -16, 16, 0, 0, 16)
+
+[node name="LightPolygon2D2" type="Polygon2D" parent="ReAttachmentDevice/Lights"]
+position = Vector2(176, 112)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-16, 0, 0, -16, 16, 0, 0, 16)
+
+[node name="LightPolygon2D3" type="Polygon2D" parent="ReAttachmentDevice/Lights"]
+position = Vector2(176, 144)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-16, 0, 0, -16, 16, 0, 0, 16)
+
+[node name="LightPolygon2D4" type="Polygon2D" parent="ReAttachmentDevice/Lights"]
+position = Vector2(176, 176)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-16, 0, 0, -16, 16, 0, 0, 16)
+
+[node name="LightPolygon2D5" type="Polygon2D" parent="ReAttachmentDevice/Lights"]
+position = Vector2(176, 208)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-16, 0, 0, -16, 16, 0, 0, 16)
+
+[node name="LightPolygon2D6" type="Polygon2D" parent="ReAttachmentDevice/Lights"]
+position = Vector2(176, 240)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-16, 0, 0, -16, 16, 0, 0, 16)
+
+[node name="LightPolygon2D7" type="Polygon2D" parent="ReAttachmentDevice/Lights"]
+position = Vector2(176, 272)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-16, 0, 0, -16, 16, 0, 0, 16)
+
+[node name="LightPolygon2D8" type="Polygon2D" parent="ReAttachmentDevice/Lights"]
+position = Vector2(176, 304)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-16, 0, 0, -16, 16, 0, 0, 16)
+
+[node name="LightPolygon2D9" type="Polygon2D" parent="ReAttachmentDevice/Lights"]
+position = Vector2(176, 336)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-16, 0, 0, -16, 16, 0, 0, 16)
+
+[node name="LightPolygon2D10" type="Polygon2D" parent="ReAttachmentDevice/Lights"]
+position = Vector2(176, 368)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-16, 0, 0, -16, 16, 0, 0, 16)
 
 [connection signal="button_down" from="BackButton" to="BackButton" method="_on_button_down"]

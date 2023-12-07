@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://d2mda53ovbu3"]
+[gd_scene load_steps=3 format=3 uid="uid://d2mda53ovbu3"]
 
 [ext_resource type="Script" path="res://Scripts/Main/panel.gd" id="1_fwse1"]
+[ext_resource type="Script" path="res://Scripts/Main/bomb.gd" id="1_ivvtm"]
 
 [node name="BombPanel" type="Node2D"]
 
@@ -9,6 +10,13 @@ position = Vector2(640, 360)
 
 [node name="DEBUG_BombSprite" type="Polygon2D" parent="."]
 position = Vector2(640, 360)
+polygon = PackedVector2Array(-128, -104, 0, -104, 128, 24, 128, 152, 224, 152, 128, 248, 128, 152, 0, 152, -128, 24)
+script = ExtResource("1_ivvtm")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="DEBUG_BombSprite"]
+input_pickable = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DEBUG_BombSprite/StaticBody2D"]
 polygon = PackedVector2Array(-128, -104, 0, -104, 128, 24, 128, 152, 224, 152, 128, 248, 128, 152, 0, 152, -128, 24)
 
 [node name="Panel1" type="Node2D" parent="."]
@@ -83,6 +91,7 @@ offset_top = -40.0
 offset_right = 96.0
 offset_bottom = 56.0
 
+[connection signal="input_event" from="DEBUG_BombSprite/StaticBody2D" to="DEBUG_BombSprite" method="_on_static_body_2d_input_event"]
 [connection signal="button_down" from="Panel1/PanelButton" to="Panel1" method="_on_panel_button_button_down"]
 [connection signal="button_down" from="Panel2/PanelButton" to="Panel2" method="_on_panel_button_button_down"]
 [connection signal="button_down" from="Panel3/PanelButton" to="Panel3" method="_on_panel_button_button_down"]

@@ -38,4 +38,30 @@ position = Vector2(8, 128)
 script = ExtResource("3_01dof")
 totalLength = 230
 
+[node name="Lights" type="Node2D" parent="EnergyDevice"]
+position = Vector2(-1111.12, -66.693)
+rotation = -0.261799
+scale = Vector2(1, 1)
+
+[node name="LightPolygon2D1" type="Polygon2D" parent="EnergyDevice/Lights"]
+position = Vector2(1051.56, 615.841)
+rotation = 0.261799
+scale = Vector2(1, 1)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(0, 32, 32, 0, 0, -32, -32, 0)
+
+[node name="LightPolygon2D2" type="Polygon2D" parent="EnergyDevice/Lights"]
+position = Vector2(1105.1, 663.316)
+rotation = 0.261799
+scale = Vector2(1, 1)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(0, 32, 32, 0, 0, -32, -32, 0)
+
+[node name="LightPolygon2D3" type="Polygon2D" parent="EnergyDevice/Lights"]
+position = Vector2(1175.2, 648.97)
+rotation = 0.261799
+scale = Vector2(1, 1)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(0, 32, 32, 0, 0, -32, -32, 0)
+
 [connection signal="button_down" from="BackButton" to="BackButton" method="_on_button_down"]

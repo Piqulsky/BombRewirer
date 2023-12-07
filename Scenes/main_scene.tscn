@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://djicfkfkb5nho" path="res://Scenes/Main/energy_cut_scene.tscn" id="3_1c10h"]
 [ext_resource type="PackedScene" uid="uid://d2mda53ovbu3" path="res://Scenes/Main/bomb_panel.tscn" id="3_culfl"]
 [ext_resource type="PackedScene" uid="uid://br4k86ueydhhj" path="res://Scenes/Main/element_replacement_scene.tscn" id="4_3atyc"]
-[ext_resource type="PackedScene" uid="uid://dwl24scqs6hx6" path="res://Scenes/Main/catalyst_replacement_scene.tscn" id="5_f1dd5"]
+[ext_resource type="PackedScene" uid="uid://dwl24scqs6hx6" path="res://Scenes/Main/radio_replacement_scene.tscn" id="5_f1dd5"]
 
 [sub_resource type="Animation" id="Animation_20qx2"]
 length = 0.001
@@ -20,7 +20,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 720)]
+"values": [Vector2(0, 800)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -32,7 +32,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 720)]
+"values": [Vector2(0, 800)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -44,19 +44,19 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 720)]
+"values": [Vector2(0, 800)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("CatalystReplacementScene:position")
+tracks/3/path = NodePath("RadioReplacementScene:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 720)]
+"values": [Vector2(0, 800)]
 }
 
 [sub_resource type="Animation" id="Animation_drjn2"]
@@ -72,7 +72,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 720), Vector2(0, 0)]
+"values": [Vector2(0, 800), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_s843p"]
@@ -88,7 +88,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, 720)]
+"values": [Vector2(0, 0), Vector2(0, 800)]
 }
 
 [sub_resource type="Animation" id="Animation_8icft"]
@@ -104,7 +104,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 720), Vector2(0, 0)]
+"values": [Vector2(0, 800), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_s5awx"]
@@ -120,7 +120,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, 720)]
+"values": [Vector2(0, 0), Vector2(0, 800)]
 }
 
 [sub_resource type="Animation" id="Animation_88usy"]
@@ -136,7 +136,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 720), Vector2(0, 0)]
+"values": [Vector2(0, 800), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_rqoon"]
@@ -152,7 +152,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, 720)]
+"values": [Vector2(0, 0), Vector2(0, 800)]
 }
 
 [sub_resource type="Animation" id="Animation_1nrbw"]
@@ -161,14 +161,14 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CatalystReplacementScene:position")
+tracks/0/path = NodePath("RadioReplacementScene:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 720), Vector2(0, 0)]
+"values": [Vector2(0, 800), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_17uoc"]
@@ -177,14 +177,14 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CatalystReplacementScene:position")
+tracks/0/path = NodePath("RadioReplacementScene:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, 720)]
+"values": [Vector2(0, 0), Vector2(0, 800)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m1fs7"]
@@ -206,7 +206,7 @@ _data = {
 
 [node name="DEBUG_BGPolygon2D" type="Polygon2D" parent="."]
 color = Color(0.158472, 0.158472, 0.158472, 1)
-polygon = PackedVector2Array(0, 0, 1280, 0, 1280, 736, 0, 736)
+polygon = PackedVector2Array(0, 0, 1280, 0, 1280, 736, 667.297, 736, 0, 736)
 
 [node name="GameTimer" parent="." instance=ExtResource("1_ju0j3")]
 
@@ -219,13 +219,13 @@ script = ExtResource("2_ga0lq")
 [node name="BombPanel" parent="." instance=ExtResource("3_culfl")]
 
 [node name="ReAttachScene" parent="." instance=ExtResource("2_c5ntf")]
-position = Vector2(0, 720)
+position = Vector2(0, 800)
 
 [node name="EnergyCutScene" parent="." instance=ExtResource("3_1c10h")]
-position = Vector2(0, 720)
+position = Vector2(0, 800)
 
 [node name="ElementReplacementScene" parent="." instance=ExtResource("4_3atyc")]
-position = Vector2(0, 720)
+position = Vector2(0, 800)
 
-[node name="CatalystReplacementScene" parent="." instance=ExtResource("5_f1dd5")]
-position = Vector2(0, 720)
+[node name="RadioReplacementScene" parent="." instance=ExtResource("5_f1dd5")]
+position = Vector2(0, 800)

@@ -3,6 +3,7 @@ extends Node2D
 var holding = false
 var inArea = false
 @export var reAttach :Area2D
+signal attachCable
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -31,7 +32,9 @@ func _on_cable_button_button_up():
 	if inArea:
 		$Line2D.points[0] = reAttach.global_position - position - Vector2($Line2D.width/2, $Line2D.width/2)
 		Globals.cablesReAttached += 1
+		attachCable.emit()
 		if Globals.cablesReAttached == 10:
+			Globals.completed_panels += 1
 			Globals.complete_re_attach.emit()
 	else:
 		# ERROR -> Shorten the TIME
