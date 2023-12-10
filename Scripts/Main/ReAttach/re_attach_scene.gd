@@ -5,12 +5,12 @@ const AttachEntry = preload("res://Scenes/Main/ReAttach/attach_entry.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var images = [load("res://Textures/1.png"),load("res://Textures/2.png"),load("res://Textures/3.png"),load("res://Textures/4.png"),load("res://Textures/5.png"),\
-		load("res://Textures/6.png"),load("res://Textures/7.png"),load("res://Textures/8.png"),load("res://Textures/9.png"),load("res://Textures/10.png")]
+	var imagesColors = [Color.GREEN, Color.GREEN_YELLOW, Color.SEA_GREEN, Color.WEB_GREEN, Color.DARK_GREEN, Color.LAWN_GREEN,\
+		Color.LIME_GREEN, Color.PALE_GREEN, Color.SPRING_GREEN, Color.YELLOW_GREEN]
 	var randIndexCabel = [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
 	var randIndexAttach = [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
 	randomize()
-	for i in range(len(images)):
+	for i in range(len(imagesColors)):
 		var r = -1
 		while randIndexCabel.find(r) != -1:
 			r = randi() % 10
@@ -19,15 +19,15 @@ func _ready():
 		while randIndexAttach.find(r) != -1:
 			r = randi() % 10
 		randIndexAttach[i] = r
-	for i in range(len(images)):
+	for i in range(len(imagesColors)):
 		var c = Cabel.instantiate()
 		var a = AttachEntry.instantiate()
 		a.position = Vector2(-32, randIndexAttach[i]*64)
-		a.get_node("ReAttachSprite2D").texture = images[i]
-		c.load_params(images[i], Vector2(32, (randIndexCabel[i] * 64)+64), a.get_node("ReAttachSprite2D/ReAttachArea2D"))
+		a.modulate = imagesColors[i]
+		c.load_params(imagesColors[i], Vector2(32, (randIndexCabel[i] * 64)+64), a)
 		c.attachCable.connect(_connect_cable)
-		$ReAttachmentDevice.add_child(a)
+		$ReAttachmentDevice/AttachEntries.add_child(a)
 		$AttachedCabels.add_child(c)
 
 func _connect_cable():
-	$ReAttachmentDevice/Lights.get_child(Globals.cablesReAttached - 1).color = Color.LIME
+	$ReAttachmentDevice/Lights.get_child(Globals.cablesReAttached - 1).texture = load("res://Textures/LightOn.PNG")

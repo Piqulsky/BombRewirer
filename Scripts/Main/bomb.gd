@@ -1,4 +1,4 @@
-extends Polygon2D
+extends Sprite2D
 
 var completed := false
 
@@ -13,11 +13,12 @@ func _process(delta):
 
 
 func _complete():
+	modulate = Color.LIME
 	completed = true
 
 
 func _on_static_body_2d_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
-		if event.pressed and completed:
+		if event.pressed:
 			Globals.end_game.emit()
 		

@@ -1,4 +1,4 @@
-extends Polygon2D
+extends Sprite2D
 
 
 # Called when the node enters the scene tree for the first time.
@@ -13,10 +13,10 @@ func _process(delta):
 
 func _on_light_timer_timeout():
 	if $LightTimer.wait_time == 5:
-		visible = false
+		texture = load("res://Textures/LightOff.PNG")
 		$LightTimer.wait_time = (randi()%3) + 2
 		$LightTimer.start()
 	else:
-		visible = true
+		texture = load("res://Textures/LightOn.PNG")
 		$LightTimer.wait_time = 5
 		$LightTimer.start()

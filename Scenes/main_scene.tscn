@@ -1,12 +1,16 @@
-[gd_scene load_steps=18 format=3 uid="uid://bsdbt6u3joe3d"]
+[gd_scene load_steps=25 format=3 uid="uid://bsdbt6u3joe3d"]
 
 [ext_resource type="PackedScene" uid="uid://d28nnhp3vwe3i" path="res://Scenes/Main/game_timer.tscn" id="1_ju0j3"]
+[ext_resource type="Texture2D" uid="uid://buxo3ohmxtypn" path="res://Textures/BG.PNG" id="1_um1dd"]
 [ext_resource type="PackedScene" uid="uid://b7x6g0vuiau5t" path="res://Scenes/Main/re_attach_scene.tscn" id="2_c5ntf"]
 [ext_resource type="Script" path="res://Scripts/Main/animation_player.gd" id="2_ga0lq"]
 [ext_resource type="PackedScene" uid="uid://djicfkfkb5nho" path="res://Scenes/Main/energy_cut_scene.tscn" id="3_1c10h"]
 [ext_resource type="PackedScene" uid="uid://d2mda53ovbu3" path="res://Scenes/Main/bomb_panel.tscn" id="3_culfl"]
 [ext_resource type="PackedScene" uid="uid://br4k86ueydhhj" path="res://Scenes/Main/element_replacement_scene.tscn" id="4_3atyc"]
 [ext_resource type="PackedScene" uid="uid://dwl24scqs6hx6" path="res://Scenes/Main/radio_replacement_scene.tscn" id="5_f1dd5"]
+[ext_resource type="Script" path="res://Scripts/Main/intro.gd" id="9_i2hha"]
+[ext_resource type="Texture2D" uid="uid://bf47vgw6u6mul" path="res://Textures/Button.PNG" id="9_mke2q"]
+[ext_resource type="Script" path="res://Scripts/Main/end.gd" id="11_1vt23"]
 
 [sub_resource type="Animation" id="Animation_20qx2"]
 length = 0.001
@@ -200,11 +204,24 @@ _data = {
 "panel4_exit": SubResource("Animation_17uoc")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_vbtii"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_w256j"]
+font_size = 30
+font_color = Color(0.607843, 0.607843, 0.607843, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pxjgh"]
+font_size = 64
+
 [node name="MainScene" type="Node2D"]
 
 [node name="BackgroundSprite2D" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+texture = ExtResource("1_um1dd")
 
 [node name="DEBUG_BGPolygon2D" type="Polygon2D" parent="."]
+visible = false
 color = Color(0.158472, 0.158472, 0.158472, 1)
 polygon = PackedVector2Array(0, 0, 1280, 0, 1280, 736, 667.297, 736, 0, 736)
 
@@ -229,3 +246,92 @@ position = Vector2(0, 800)
 
 [node name="RadioReplacementScene" parent="." instance=ExtResource("5_f1dd5")]
 position = Vector2(0, 800)
+
+[node name="IntroColorRect" type="ColorRect" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 1)
+script = ExtResource("9_i2hha")
+
+[node name="Label" type="Label" parent="IntroColorRect"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 64.0
+offset_right = 1024.0
+offset_bottom = 576.0
+text = "There was another nuclear bomb.
+It fell just outside The Hague, targeting the V2
+rocket launcher outpost.
+You were awakened by a ringing telephone. Your
+services as an experimental weapons expert are
+are needed. You fly to The Hague and discover a
+huge bomb that has apparently failed to
+to explode. Your mission? Disarm it to prevent 
+massive destruction. You must be quick and precise."
+label_settings = SubResource("LabelSettings_vbtii")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartTextureButton" type="TextureButton" parent="IntroColorRect"]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 576.0
+offset_right = 768.0
+offset_bottom = 640.0
+texture_normal = ExtResource("9_mke2q")
+
+[node name="Label" type="Label" parent="IntroColorRect/StartTextureButton"]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 64.0
+text = "Start disarming"
+label_settings = SubResource("LabelSettings_w256j")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EndColorRect" type="ColorRect" parent="."]
+visible = false
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 1)
+script = ExtResource("11_1vt23")
+
+[node name="TimeLabel" type="Label" parent="EndColorRect"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 160.0
+offset_right = 1024.0
+offset_bottom = 288.0
+text = "00:00:00"
+label_settings = SubResource("LabelSettings_pxjgh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExitTextureButton" type="TextureButton" parent="EndColorRect"]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 448.0
+offset_right = 768.0
+offset_bottom = 512.0
+texture_normal = ExtResource("9_mke2q")
+
+[node name="Label" type="Label" parent="EndColorRect/ExitTextureButton"]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 64.0
+text = "Exit"
+label_settings = SubResource("LabelSettings_w256j")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextEdit" type="TextEdit" parent="EndColorRect"]
+layout_mode = 0
+offset_left = 416.0
+offset_top = 352.0
+offset_right = 864.0
+offset_bottom = 416.0
+theme_override_font_sizes/font_size = 32
+placeholder_text = "Name..."
+
+[connection signal="button_down" from="IntroColorRect/StartTextureButton" to="IntroColorRect" method="_on_start_texture_button_button_down"]
+[connection signal="button_down" from="EndColorRect/ExitTextureButton" to="EndColorRect" method="_on_exit_texture_button_button_down"]

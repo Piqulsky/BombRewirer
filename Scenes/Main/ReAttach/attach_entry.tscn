@@ -1,17 +1,19 @@
 [gd_scene load_steps=3 format=3 uid="uid://csa8kdh1phgoq"]
 
-[ext_resource type="Texture2D" uid="uid://dis715n0jhdxi" path="res://Textures/1.png" id="1_hb030"]
+[ext_resource type="Texture2D" uid="uid://c4mx5j3r4h12q" path="res://Textures/AttachCableEnd.PNG" id="1_k423d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tiv55"]
-size = Vector2(64, 64)
+size = Vector2(48, 64)
 
 [node name="AttachEntry" type="Node2D"]
 position = Vector2(-32, 0)
 
 [node name="ReAttachSprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_hb030")
+position = Vector2(16, 0)
+texture = ExtResource("1_k423d")
 
 [node name="ReAttachArea2D" type="Area2D" parent="ReAttachSprite2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ReAttachSprite2D/ReAttachArea2D"]
+position = Vector2(-8, 0)
 shape = SubResource("RectangleShape2D_tiv55")

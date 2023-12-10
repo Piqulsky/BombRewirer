@@ -1,4 +1,4 @@
-extends Polygon2D
+extends Sprite2D
 
 var mousePressed := false
 var startPos := Vector2(96, 640)
@@ -30,7 +30,7 @@ func _on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shap
 
 func _on_area_2d_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	if area.name == "TargetArea2D":
-		color = Color.LIME
+		modulate = Color.LIME
 		mousePressed = false
 		position = endPos
 		Globals.completed_panels += 1

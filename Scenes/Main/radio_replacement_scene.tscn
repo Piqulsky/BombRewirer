@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dwl24scqs6hx6"]
+[gd_scene load_steps=9 format=3 uid="uid://dwl24scqs6hx6"]
 
 [ext_resource type="Script" path="res://Scripts/Main/back_button.gd" id="1_pq1ag"]
+[ext_resource type="Texture2D" uid="uid://dt62tn00h4lnc" path="res://Textures/Radio.PNG" id="1_xryvo"]
 [ext_resource type="Script" path="res://Scripts/Main/RadioReplace/radio.gd" id="2_371uq"]
 [ext_resource type="Texture2D" uid="uid://drql2fhntdnaf" path="res://Textures/border_tile_map.png" id="3_b13oj"]
 
@@ -33,31 +34,36 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_c2olb")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ilxv7"]
-size = Vector2(128, 96)
+size = Vector2(96, 64)
 
 [node name="RadioReplacementScene" type="Node2D"]
 
-[node name="BackgroundSprite2D" type="Sprite2D" parent="."]
+[node name="BackgroundSprite2D" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
 
 [node name="DEBUG_BGPolygon2D" type="Polygon2D" parent="."]
+visible = false
 color = Color(0.588235, 0.588235, 0.588235, 1)
 polygon = PackedVector2Array(0, 0, 1280, 0, 1280, 736, 0, 736)
 
-[node name="RadioPolygon2D" type="Polygon2D" parent="."]
+[node name="RadioSprite2D" type="Sprite2D" parent="."]
 position = Vector2(96, 640)
-polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+texture = ExtResource("1_xryvo")
 script = ExtResource("2_371uq")
 
-[node name="RadioButton" type="Button" parent="RadioPolygon2D"]
+[node name="RadioButton" type="Button" parent="RadioSprite2D"]
 modulate = Color(1, 1, 1, 0)
 offset_left = -32.0
 offset_top = -32.0
 offset_right = 32.0
 offset_bottom = 32.0
 
-[node name="Area2D" type="Area2D" parent="RadioPolygon2D"]
+[node name="Area2D" type="Area2D" parent="RadioSprite2D"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RadioPolygon2D/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RadioSprite2D/Area2D"]
 shape = SubResource("RectangleShape2D_iukta")
 
 [node name="BordersTileMap" type="TileMap" parent="."]
@@ -77,11 +83,11 @@ enterAnimationName = "panel4_exit"
 [node name="TargetArea2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TargetArea2D"]
-position = Vector2(1184, 688)
+position = Vector2(1200, 704)
 shape = SubResource("RectangleShape2D_ilxv7")
 
-[connection signal="button_down" from="RadioPolygon2D/RadioButton" to="RadioPolygon2D" method="_on_radio_button_button_down"]
-[connection signal="button_up" from="RadioPolygon2D/RadioButton" to="RadioPolygon2D" method="_on_radio_button_button_up"]
-[connection signal="area_shape_entered" from="RadioPolygon2D/Area2D" to="RadioPolygon2D" method="_on_area_2d_area_shape_entered"]
-[connection signal="body_shape_entered" from="RadioPolygon2D/Area2D" to="RadioPolygon2D" method="_on_area_2d_body_shape_entered"]
+[connection signal="button_down" from="RadioSprite2D/RadioButton" to="RadioSprite2D" method="_on_radio_button_button_down"]
+[connection signal="button_up" from="RadioSprite2D/RadioButton" to="RadioSprite2D" method="_on_radio_button_button_up"]
+[connection signal="area_shape_entered" from="RadioSprite2D/Area2D" to="RadioSprite2D" method="_on_area_2d_area_shape_entered"]
+[connection signal="body_shape_entered" from="RadioSprite2D/Area2D" to="RadioSprite2D" method="_on_area_2d_body_shape_entered"]
 [connection signal="button_down" from="BackButton" to="BackButton" method="_on_button_down"]

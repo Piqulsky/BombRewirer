@@ -9,7 +9,7 @@ extends Node2D
 @export var color := Color.LIME
 @export_range(0.0, 2*PI) var movement := 0.0
 
-@export var DEBUG_cablePolygon :Polygon2D
+@export var CableSprite2D :Sprite2D
 @export var scissors :Sprite2D
 
 var chosen := false
@@ -33,17 +33,18 @@ func _draw():
 		
 
 func _on_cable_button_mouse_entered():
-	DEBUG_cablePolygon.color = Color.GRAY
+	CableSprite2D.modulate = Color.GRAY
 	scissors.visible = true
 
 
 func _on_cable_button_mouse_exited():
-	DEBUG_cablePolygon.color = Color.WHITE
+	CableSprite2D.modulate = Color.WHITE
 	scissors.visible = false
 
 
 func _on_cable_button_button_down():
-	DEBUG_cablePolygon.scale.x = 0.5
+	CableSprite2D.scale.x = 0.5
+	CableSprite2D.position.x -= 320
 	totalLength = 0
 	cutted.emit(chosen)
 

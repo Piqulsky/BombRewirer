@@ -1,14 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7x6g0vuiau5t"]
+[gd_scene load_steps=4 format=3 uid="uid://b7x6g0vuiau5t"]
 
 [ext_resource type="Script" path="res://Scripts/Main/back_button.gd" id="1_75jc3"]
 [ext_resource type="Script" path="res://Scripts/Main/ReAttach/re_attach_scene.gd" id="1_q28r1"]
+[ext_resource type="Texture2D" uid="uid://cvjho764tbp2w" path="res://Textures/LightOff.PNG" id="3_0jct8"]
 
 [node name="ReAttachScene" type="Node2D"]
 script = ExtResource("1_q28r1")
 
-[node name="BackgroundSprite2D" type="Sprite2D" parent="."]
+[node name="BackgroundSprite2D" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
 
 [node name="DEBUG_BGPolygon2D" type="Polygon2D" parent="."]
+visible = false
 color = Color(0.254902, 0.254902, 0.254902, 1)
 polygon = PackedVector2Array(0, 0, 1280, 0, 1280, 736, 0, 736)
 
@@ -33,54 +39,56 @@ polygon = PackedVector2Array(0, 0, 256, 0, 256, 576, 126.516, 576, 0, 576)
 
 [node name="Lights" type="Node2D" parent="ReAttachmentDevice"]
 
-[node name="LightPolygon2D1" type="Polygon2D" parent="ReAttachmentDevice/Lights"]
+[node name="LightSprite2D1" type="Sprite2D" parent="ReAttachmentDevice/Lights"]
 position = Vector2(176, 80)
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(-16, 0, 0, -16, 16, 0, 0, 16)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_0jct8")
 
-[node name="LightPolygon2D2" type="Polygon2D" parent="ReAttachmentDevice/Lights"]
+[node name="LightSprite2D2" type="Sprite2D" parent="ReAttachmentDevice/Lights"]
 position = Vector2(176, 112)
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(-16, 0, 0, -16, 16, 0, 0, 16)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_0jct8")
 
-[node name="LightPolygon2D3" type="Polygon2D" parent="ReAttachmentDevice/Lights"]
+[node name="LightSprite2D3" type="Sprite2D" parent="ReAttachmentDevice/Lights"]
 position = Vector2(176, 144)
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(-16, 0, 0, -16, 16, 0, 0, 16)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_0jct8")
 
-[node name="LightPolygon2D4" type="Polygon2D" parent="ReAttachmentDevice/Lights"]
+[node name="LightSprite2D4" type="Sprite2D" parent="ReAttachmentDevice/Lights"]
 position = Vector2(176, 176)
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(-16, 0, 0, -16, 16, 0, 0, 16)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_0jct8")
 
-[node name="LightPolygon2D5" type="Polygon2D" parent="ReAttachmentDevice/Lights"]
+[node name="LightSprite2D5" type="Sprite2D" parent="ReAttachmentDevice/Lights"]
 position = Vector2(176, 208)
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(-16, 0, 0, -16, 16, 0, 0, 16)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_0jct8")
 
-[node name="LightPolygon2D6" type="Polygon2D" parent="ReAttachmentDevice/Lights"]
+[node name="LightSprite2D6" type="Sprite2D" parent="ReAttachmentDevice/Lights"]
 position = Vector2(176, 240)
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(-16, 0, 0, -16, 16, 0, 0, 16)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_0jct8")
 
-[node name="LightPolygon2D7" type="Polygon2D" parent="ReAttachmentDevice/Lights"]
+[node name="LightSprite2D7" type="Sprite2D" parent="ReAttachmentDevice/Lights"]
 position = Vector2(176, 272)
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(-16, 0, 0, -16, 16, 0, 0, 16)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_0jct8")
 
-[node name="LightPolygon2D8" type="Polygon2D" parent="ReAttachmentDevice/Lights"]
+[node name="LightSprite2D8" type="Sprite2D" parent="ReAttachmentDevice/Lights"]
 position = Vector2(176, 304)
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(-16, 0, 0, -16, 16, 0, 0, 16)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_0jct8")
 
-[node name="LightPolygon2D9" type="Polygon2D" parent="ReAttachmentDevice/Lights"]
+[node name="LightSprite2D9" type="Sprite2D" parent="ReAttachmentDevice/Lights"]
 position = Vector2(176, 336)
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(-16, 0, 0, -16, 16, 0, 0, 16)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_0jct8")
 
-[node name="LightPolygon2D10" type="Polygon2D" parent="ReAttachmentDevice/Lights"]
+[node name="LightSprite2D10" type="Sprite2D" parent="ReAttachmentDevice/Lights"]
 position = Vector2(176, 368)
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(-16, 0, 0, -16, 16, 0, 0, 16)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_0jct8")
+
+[node name="AttachEntries" type="Node2D" parent="ReAttachmentDevice"]
 
 [connection signal="button_down" from="BackButton" to="BackButton" method="_on_button_down"]

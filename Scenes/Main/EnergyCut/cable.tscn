@@ -1,23 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://rliw6p85y4d7"]
+[gd_scene load_steps=3 format=3 uid="uid://rliw6p85y4d7"]
 
+[ext_resource type="Texture2D" uid="uid://dens7qs3f1pi0" path="res://Textures/EnergyCable.PNG" id="1_kxihg"]
 [ext_resource type="Script" path="res://Scripts/Main/EnergyCut/cable.gd" id="1_wpe06"]
 
 [node name="Cable" type="Node2D"]
 position = Vector2(0, 64)
 
-[node name="DEBUG_CablePolygon2D" type="Polygon2D" parent="."]
-polygon = PackedVector2Array(0, 0, 1280, 0, 1280, 64, 0, 64)
+[node name="CableSprite2D" type="Sprite2D" parent="."]
+position = Vector2(640, 0)
+texture = ExtResource("1_kxihg")
 
-[node name="CableSineLine2D" type="Node2D" parent="." node_paths=PackedStringArray("DEBUG_cablePolygon", "scissors")]
-position = Vector2(0, 32)
+[node name="CableSineLine2D" type="Node2D" parent="." node_paths=PackedStringArray("CableSprite2D", "scissors")]
 script = ExtResource("1_wpe06")
-DEBUG_cablePolygon = NodePath("../DEBUG_CablePolygon2D")
+CableSprite2D = NodePath("../CableSprite2D")
 scissors = NodePath("../ScissorsSprite2D")
 
 [node name="CableButton" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0)
+offset_top = -32.0
 offset_right = 1280.0
-offset_bottom = 64.0
+offset_bottom = 32.0
 
 [node name="ScissorsSprite2D" type="Sprite2D" parent="."]
 visible = false

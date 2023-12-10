@@ -1,15 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://bq6x86o15c741"]
+[gd_scene load_steps=5 format=3 uid="uid://bq6x86o15c741"]
 
 [ext_resource type="Script" path="res://Scripts/Main/ReAttach/cabel.gd" id="1_0qehi"]
-[ext_resource type="Texture2D" uid="uid://dis715n0jhdxi" path="res://Textures/1.png" id="2_waqwc"]
+[ext_resource type="Texture2D" uid="uid://frvk1e8jl4ii" path="res://Textures/AttachCableBefore.PNG" id="2_bus1a"]
+[ext_resource type="Texture2D" uid="uid://bmrtavwh4kglm" path="res://Textures/AttachCable.PNG" id="3_ix6ec"]
+[ext_resource type="Texture2D" uid="uid://dxnh5tc12sx6a" path="res://Textures/AttachCableStart.PNG" id="4_4oeh5"]
 
-[node name="Cabel" type="Node2D" node_paths=PackedStringArray("reAttach")]
+[node name="Cabel" type="Node2D"]
 script = ExtResource("1_0qehi")
-reAttach = NodePath("")
 
 [node name="CabelSprite2D" type="Sprite2D" parent="."]
-position = Vector2(32, 32)
-texture = ExtResource("2_waqwc")
+position = Vector2(0, 32)
+texture = ExtResource("2_bus1a")
 
 [node name="CableButton" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -21,8 +22,13 @@ texture_repeat = 2
 position = Vector2(32, 32)
 points = PackedVector2Array(0, 0, 0, 0)
 width = 32.0
-texture = ExtResource("2_waqwc")
+texture = ExtResource("3_ix6ec")
 texture_mode = 1
+
+[node name="PlugSprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(32, 32)
+texture = ExtResource("4_4oeh5")
 
 [connection signal="button_down" from="CableButton" to="." method="_on_cable_button_button_down"]
 [connection signal="button_up" from="CableButton" to="." method="_on_cable_button_button_up"]

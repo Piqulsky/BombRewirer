@@ -1,15 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://djicfkfkb5nho"]
+[gd_scene load_steps=6 format=3 uid="uid://djicfkfkb5nho"]
 
 [ext_resource type="Script" path="res://Scripts/Main/back_button.gd" id="1_cudnr"]
 [ext_resource type="Script" path="res://Scripts/Main/EnergyCut/energy_cut_scene.gd" id="1_lfi7i"]
 [ext_resource type="Script" path="res://Scripts/Main/EnergyCut/cable.gd" id="3_01dof"]
+[ext_resource type="Texture2D" uid="uid://8tfs3xocswr5" path="res://Textures/EnergyDevice.PNG" id="3_eonvh"]
+[ext_resource type="Texture2D" uid="uid://cvjho764tbp2w" path="res://Textures/LightOff.PNG" id="5_2i7hd"]
 
 [node name="EnergyCutScene" type="Node2D"]
 script = ExtResource("1_lfi7i")
 
-[node name="BackgroundSprite2D" type="Sprite2D" parent="."]
+[node name="BackgroundSprite2D" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
 
 [node name="DEBUG_BGPolygon2D" type="Polygon2D" parent="."]
+visible = false
 color = Color(0.392157, 0.392157, 0.392157, 1)
 polygon = PackedVector2Array(0, 0, 1280, 0, 1280, 736, 0, 736)
 
@@ -22,46 +29,47 @@ script = ExtResource("1_cudnr")
 enterAnimationName = "panel2_exit"
 
 [node name="EnergyCables" type="Node2D" parent="."]
+position = Vector2(0, 32)
 
 [node name="EnergyDevice" type="Node2D" parent="."]
-position = Vector2(1056, 352)
+position = Vector2(1056, 288)
 rotation = 0.261799
 
 [node name="DeviceSprite2D" type="Sprite2D" parent="EnergyDevice"]
+position = Vector2(128, 192)
+texture = ExtResource("3_eonvh")
 
 [node name="DEBUG_DevicePolygon2D" type="Polygon2D" parent="EnergyDevice"]
+visible = false
 color = Color(0.54902, 0.54902, 0.54902, 1)
 polygon = PackedVector2Array(0, 0, 256, 0, 256, 384, 0, 384)
 
 [node name="DeviceSineLine2D" type="Node2D" parent="EnergyDevice"]
-position = Vector2(8, 128)
+position = Vector2(24, 208)
 script = ExtResource("3_01dof")
-totalLength = 230
+totalLength = 200
 
 [node name="Lights" type="Node2D" parent="EnergyDevice"]
-position = Vector2(-1111.12, -66.693)
-rotation = -0.261799
-scale = Vector2(1, 1)
+position = Vector2(128, 320)
 
-[node name="LightPolygon2D1" type="Polygon2D" parent="EnergyDevice/Lights"]
-position = Vector2(1051.56, 615.841)
-rotation = 0.261799
-scale = Vector2(1, 1)
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(0, 32, 32, 0, 0, -32, -32, 0)
+[node name="LightSprite2D1" type="Sprite2D" parent="EnergyDevice/Lights"]
+position = Vector2(-72, -32)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("5_2i7hd")
 
-[node name="LightPolygon2D2" type="Polygon2D" parent="EnergyDevice/Lights"]
-position = Vector2(1105.1, 663.316)
-rotation = 0.261799
-scale = Vector2(1, 1)
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(0, 32, 32, 0, 0, -32, -32, 0)
+[node name="LightSprite2D2" type="Sprite2D" parent="EnergyDevice/Lights"]
+position = Vector2(-72, 20)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("5_2i7hd")
 
-[node name="LightPolygon2D3" type="Polygon2D" parent="EnergyDevice/Lights"]
-position = Vector2(1175.2, 648.97)
-rotation = 0.261799
-scale = Vector2(1, 1)
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(0, 32, 32, 0, 0, -32, -32, 0)
+[node name="LightSprite2D3" type="Sprite2D" parent="EnergyDevice/Lights"]
+position = Vector2(72, -32)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("5_2i7hd")
+
+[node name="LightSprite2D4" type="Sprite2D" parent="EnergyDevice/Lights"]
+position = Vector2(72, 20)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("5_2i7hd")
 
 [connection signal="button_down" from="BackButton" to="BackButton" method="_on_button_down"]

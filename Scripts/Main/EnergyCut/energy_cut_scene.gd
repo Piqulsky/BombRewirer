@@ -45,9 +45,9 @@ func _process(delta):
 
 func _cut(chosen :bool):
 	if(chosen):
-		$EnergyDevice/Lights.get_child(Globals.cutCables).color = Color.LIME
+		$EnergyDevice/Lights.get_child(Globals.cutCables).texture = load("res://Textures/LightOn.PNG")
 		Globals.cutCables += 1
-		if Globals.cutCables == 3:
+		if Globals.cutCables == 4:
 			$EnergyDevice/DeviceSineLine2D.drawing = false
 			Globals.completed_panels += 1
 			Globals.complete_energy_cut.emit()
@@ -58,9 +58,10 @@ func _cut(chosen :bool):
 			_ready()
 	else:
 		Globals.cutCables = 0
-		$EnergyDevice/Lights/LightPolygon2D1.color = Color.BLACK
-		$EnergyDevice/Lights/LightPolygon2D2.color = Color.BLACK
-		$EnergyDevice/Lights/LightPolygon2D3.color = Color.BLACK
+		$EnergyDevice/Lights/LightSprite2D1.texture = load("res://Textures/LightOff.PNG")
+		$EnergyDevice/Lights/LightSprite2D2.texture = load("res://Textures/LightOff.PNG")
+		$EnergyDevice/Lights/LightSprite2D3.texture = load("res://Textures/LightOff.PNG")
+		$EnergyDevice/Lights/LightSprite2D4.texture = load("res://Textures/LightOff.PNG")
 		for n in $EnergyCables.get_children():
 			$EnergyCables.remove_child(n)
 			n.queue_free()
