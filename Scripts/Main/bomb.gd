@@ -19,6 +19,6 @@ func _complete():
 
 func _on_static_body_2d_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
-		if event.pressed:
+		if event.pressed and completed:
 			Globals.end_game.emit()
 		
